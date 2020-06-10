@@ -8,3 +8,6 @@
 /httpRequests/
 **/out/
 **/build/
+/build/
+/.gradle/
+/.idea/

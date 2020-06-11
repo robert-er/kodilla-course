@@ -6,6 +6,14 @@ import java.util.List;
 
 public class CollectionTestSuite {
 
+    private ArrayList<Integer> generateList() {
+        ArrayList<Integer> inputList = new ArrayList<>();
+        for(int i = 0; i < 10; i++) {
+            inputList.add(i+1);
+        }
+        return inputList;
+    }
+
     @BeforeClass
     public static void beforeClass() {
         System.out.println("Collection Test Suite: begin");
@@ -32,8 +40,7 @@ public class CollectionTestSuite {
         ArrayList<Integer> inputList = new ArrayList<>();
         OddNumbersExterminator oddNumbersExterminator = new OddNumbersExterminator();
         //When
-        ArrayList<Integer> resultList = new ArrayList<>();
-        resultList = oddNumbersExterminator.exterminate(inputList);
+        ArrayList<Integer> resultList = oddNumbersExterminator.exterminate(inputList);
         for(Integer element: resultList) {
             System.out.println(element);
         }
@@ -46,11 +53,9 @@ public class CollectionTestSuite {
     public void testOddNumbersExterminatorNormalList() {
         System.out.println("Testing normal list");
         //Given
-        ArrayList<Integer> inputList = new ArrayList<>();
+        ArrayList<Integer> inputList = generateList();
         OddNumbersExterminator oddNumbersExterminator = new OddNumbersExterminator();
-        for(int i = 0; i < 10; i++) {
-            inputList.add(i+1);
-        }
+
         //When
         ArrayList<Integer> resultList = oddNumbersExterminator.exterminate(inputList);
         System.out.println("result list size: " + resultList.size());

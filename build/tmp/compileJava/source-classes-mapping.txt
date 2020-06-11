@@ -1,2 +1,0 @@
-com/kodilla/Main.java
- com.kodilla.Main

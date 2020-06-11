@@ -6,8 +6,8 @@
 /dataSources.local.xml
 # Editor-based HTTP Client requests
 /httpRequests/
-/out/
-/build/
-/.gradle/
-/.idea/
-/kodilla-testing/build/
+/out/**
+/build/**
+/.gradle/**
+/.idea/**
+/kodilla-testing/build/**

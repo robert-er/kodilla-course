@@ -1,8 +1,9 @@
 package com.kodilla.testing.collection;
 
 import org.junit.*;
+
 import java.util.ArrayList;
-import java.util.List;
+
 
 public class CollectionTestSuite {
 

@@ -1,5 +1,9 @@
 package com.kodilla.testing.shape;
 
+import com.kodilla.testing.forum.ForumPost;
+
+import java.util.Objects;
+
 public class Circle implements Shape {
 
     private double r;
@@ -13,13 +17,31 @@ public class Circle implements Shape {
         this.number = counter;
     }
 
+    public double getR() {
+        return r;
+    }
+
     @Override
     public String getShapeName() {
-        return String.valueOf(Circle.class) + number;
+        return Circle.class.getName() + number;
     }
 
     @Override
     public double getField() {
         return pi * Math.pow(r, 2);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Circle circle = (Circle) o;
+        return this.r == circle.getR();
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(r);
     }
 }

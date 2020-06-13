@@ -70,4 +70,28 @@ public class ShapeCollectorTestSuite {
         //Then
         Assert.assertNotNull(shapeCollector.showFigures());
     }
+
+    @Test
+    public void testGetShapeName() {
+        //Given
+        ShapeCollector shapeCollector = new ShapeCollector();
+        Circle testFigure = createTestCircle();
+        //When
+        shapeCollector.addFigure(testFigure);
+        //Then
+        Assert.assertEquals("com.kodilla.testing.shape.Circle",shapeCollector.getFigure(0)
+                .getShapeName()
+                .substring(0,shapeCollector.getFigure(0).getShapeName().length()-1));
+    }
+
+    @Test
+    public void testGetField() {
+        //Given
+        ShapeCollector shapeCollector = new ShapeCollector();
+        Circle testFigure = createTestCircle();
+        //When
+        shapeCollector.addFigure(testFigure);
+        //Then
+        Assert.assertEquals(50.24, shapeCollector.getFigure(0).getField(), 0.0);
+    }
 }

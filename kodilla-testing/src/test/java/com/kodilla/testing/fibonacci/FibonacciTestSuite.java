@@ -1,6 +1,5 @@
-package com.kodilla.testing.collection.fibonacci;
+package com.kodilla.testing.fibonacci;
 
-import com.kodilla.testing.fibonacci.Fibonacci;
 import org.junit.Assert;
 import org.junit.Test;
 

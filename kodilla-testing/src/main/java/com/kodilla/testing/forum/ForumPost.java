@@ -1,8 +1,8 @@
 package com.kodilla.testing.forum;
 
 public class ForumPost {
-    String postBody;
-    String author;
+    private String postBody;
+    private String author;
 
     public ForumPost(String postBody, String author) {
         this.postBody = postBody;

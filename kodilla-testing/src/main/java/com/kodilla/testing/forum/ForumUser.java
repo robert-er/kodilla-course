@@ -51,21 +51,11 @@ public class ForumUser {
     }
 
     public boolean removePost(ForumPost thePost){
-        boolean result = false;
-        if (posts.contains(thePost)){
-            posts.remove(thePost);
-            result = true;
-        }
-        return result;
+        return posts.remove(thePost);
     }
 
     public boolean removeComment(ForumComment theComment){
-        boolean result = false;
-        if (comments.contains(theComment)){
-            comments.remove(theComment);
-            result = true;
-        }
-        return result;
+        return comments.remove(theComment);
     }
 
     public String getName() {

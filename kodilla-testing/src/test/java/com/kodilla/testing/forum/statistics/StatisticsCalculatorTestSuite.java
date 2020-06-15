@@ -27,34 +27,9 @@ public class StatisticsCalculatorTestSuite {
         System.out.println("Preparing to execute test #" + testCounter);
     }
 
-    private int generate0Posts() {
-        return 0;
-    }
-
-    private int generate1000Posts() {
-        return 1000;
-    }
-
-    private int generate0Comments() {
-        return 0;
-    }
-
-    private int generate500Comments() {
-        return 500;
-    }
-
-    private int generate2000Comments() {
-        return 2000;
-    }
-
-    private List<String> generate0Users() {
+    private List<String> generateUsers(int amount) {
         List<String> userList = new ArrayList<>();
-        return userList;
-    }
-
-    private List<String> generate100Users() {
-        List<String> userList = new ArrayList<>();
-        for(int i = 0; i < 100; i++) {
+        for(int i = 0; i < amount; i++) {
             userList.add("user" + i);
         }
         return userList;
@@ -64,9 +39,9 @@ public class StatisticsCalculatorTestSuite {
     public void testCalculateAdvStatisticsAllZeros() {
         //Given
         Statistics statisticsMock = mock(Statistics.class);
-        when(statisticsMock.usersNames()).thenReturn(generate0Users());
-        when(statisticsMock.postsCount()).thenReturn(generate0Posts());
-        when(statisticsMock.commentsCount()).thenReturn(generate0Comments());
+        when(statisticsMock.usersNames()).thenReturn(generateUsers(0));
+        when(statisticsMock.postsCount()).thenReturn(0);
+        when(statisticsMock.commentsCount()).thenReturn(0);
         StatisticsCalculator statisticsCalculator = new StatisticsCalculator();
         statisticsCalculator.calculateAdvStatistics(statisticsMock);
         //When
@@ -84,9 +59,9 @@ public class StatisticsCalculatorTestSuite {
     public void testCalculateAdvStatistics1000PostsOtherZeros() {
         //Given
         Statistics statisticsMock = mock(Statistics.class);
-        when(statisticsMock.usersNames()).thenReturn(generate0Users());
-        when(statisticsMock.postsCount()).thenReturn(generate1000Posts());
-        when(statisticsMock.commentsCount()).thenReturn(generate0Comments());
+        when(statisticsMock.usersNames()).thenReturn(generateUsers(0));
+        when(statisticsMock.postsCount()).thenReturn(1000);
+        when(statisticsMock.commentsCount()).thenReturn(0);
         StatisticsCalculator statisticsCalculator = new StatisticsCalculator();
         statisticsCalculator.calculateAdvStatistics(statisticsMock);
         //When
@@ -104,9 +79,9 @@ public class StatisticsCalculatorTestSuite {
     public void testCalculateAdvStatistics500CommentsOtherZero() {
         //Given
         Statistics statisticsMock = mock(Statistics.class);
-        when(statisticsMock.usersNames()).thenReturn(generate0Users());
-        when(statisticsMock.postsCount()).thenReturn(generate0Posts());
-        when(statisticsMock.commentsCount()).thenReturn(generate500Comments());
+        when(statisticsMock.usersNames()).thenReturn(generateUsers(0));
+        when(statisticsMock.postsCount()).thenReturn(0);
+        when(statisticsMock.commentsCount()).thenReturn(500);
         StatisticsCalculator statisticsCalculator = new StatisticsCalculator();
         statisticsCalculator.calculateAdvStatistics(statisticsMock);
         //When
@@ -124,9 +99,9 @@ public class StatisticsCalculatorTestSuite {
     public void testCalculateAdvStatistics0Users1000Posts500Comments() {
         //Given
         Statistics statisticsMock = mock(Statistics.class);
-        when(statisticsMock.usersNames()).thenReturn(generate0Users());
-        when(statisticsMock.postsCount()).thenReturn(generate1000Posts());
-        when(statisticsMock.commentsCount()).thenReturn(generate500Comments());
+        when(statisticsMock.usersNames()).thenReturn(generateUsers(0));
+        when(statisticsMock.postsCount()).thenReturn(1000);
+        when(statisticsMock.commentsCount()).thenReturn(500);
         StatisticsCalculator statisticsCalculator = new StatisticsCalculator();
         statisticsCalculator.calculateAdvStatistics(statisticsMock);
         //When
@@ -144,9 +119,9 @@ public class StatisticsCalculatorTestSuite {
     public void testCalculateAdvStatistics0Users1000Posts2000Comments() {
         //Given
         Statistics statisticsMock = mock(Statistics.class);
-        when(statisticsMock.usersNames()).thenReturn(generate0Users());
-        when(statisticsMock.postsCount()).thenReturn(generate1000Posts());
-        when(statisticsMock.commentsCount()).thenReturn(generate2000Comments());
+        when(statisticsMock.usersNames()).thenReturn(generateUsers(0));
+        when(statisticsMock.postsCount()).thenReturn(1000);
+        when(statisticsMock.commentsCount()).thenReturn(2000);
         StatisticsCalculator statisticsCalculator = new StatisticsCalculator();
         statisticsCalculator.calculateAdvStatistics(statisticsMock);
         //When
@@ -164,9 +139,9 @@ public class StatisticsCalculatorTestSuite {
     public void testCalculateAdvStatistics100UsersOtherZeros() {
         //Given
         Statistics statisticsMock = mock(Statistics.class);
-        when(statisticsMock.usersNames()).thenReturn(generate100Users());
-        when(statisticsMock.postsCount()).thenReturn(generate0Posts());
-        when(statisticsMock.commentsCount()).thenReturn(generate0Comments());
+        when(statisticsMock.usersNames()).thenReturn(generateUsers(100));
+        when(statisticsMock.postsCount()).thenReturn(0);
+        when(statisticsMock.commentsCount()).thenReturn(0);
         StatisticsCalculator statisticsCalculator = new StatisticsCalculator();
         statisticsCalculator.calculateAdvStatistics(statisticsMock);
         //When
@@ -184,9 +159,9 @@ public class StatisticsCalculatorTestSuite {
     public void testCalculateAdvStatistics100Users0Posts500Comments() {
         //Given
         Statistics statisticsMock = mock(Statistics.class);
-        when(statisticsMock.usersNames()).thenReturn(generate100Users());
-        when(statisticsMock.postsCount()).thenReturn(generate0Posts());
-        when(statisticsMock.commentsCount()).thenReturn(generate500Comments());
+        when(statisticsMock.usersNames()).thenReturn(generateUsers(100));
+        when(statisticsMock.postsCount()).thenReturn(0);
+        when(statisticsMock.commentsCount()).thenReturn(500);
         StatisticsCalculator statisticsCalculator = new StatisticsCalculator();
         statisticsCalculator.calculateAdvStatistics(statisticsMock);
         //When
@@ -204,9 +179,9 @@ public class StatisticsCalculatorTestSuite {
     public void testCalculateAdvStatistics100Users1000Posts0Comments() {
         //Given
         Statistics statisticsMock = mock(Statistics.class);
-        when(statisticsMock.usersNames()).thenReturn(generate100Users());
-        when(statisticsMock.postsCount()).thenReturn(generate1000Posts());
-        when(statisticsMock.commentsCount()).thenReturn(generate0Comments());
+        when(statisticsMock.usersNames()).thenReturn(generateUsers(100));
+        when(statisticsMock.postsCount()).thenReturn(1000);
+        when(statisticsMock.commentsCount()).thenReturn(0);
         StatisticsCalculator statisticsCalculator = new StatisticsCalculator();
         statisticsCalculator.calculateAdvStatistics(statisticsMock);
         //When
@@ -224,9 +199,9 @@ public class StatisticsCalculatorTestSuite {
     public void testCalculateAdvStatistics100Users1000Posts500Comments() {
         //Given
         Statistics statisticsMock = mock(Statistics.class);
-        when(statisticsMock.usersNames()).thenReturn(generate100Users());
-        when(statisticsMock.postsCount()).thenReturn(generate1000Posts());
-        when(statisticsMock.commentsCount()).thenReturn(generate500Comments());
+        when(statisticsMock.usersNames()).thenReturn(generateUsers(100));
+        when(statisticsMock.postsCount()).thenReturn(1000);
+        when(statisticsMock.commentsCount()).thenReturn(500);
         StatisticsCalculator statisticsCalculator = new StatisticsCalculator();
         statisticsCalculator.calculateAdvStatistics(statisticsMock);
         //When
@@ -244,9 +219,9 @@ public class StatisticsCalculatorTestSuite {
     public void testCalculateAdvStatistics100Users1000Posts2000Comments() {
         //Given
         Statistics statisticsMock = mock(Statistics.class);
-        when(statisticsMock.usersNames()).thenReturn(generate100Users());
-        when(statisticsMock.postsCount()).thenReturn(generate1000Posts());
-        when(statisticsMock.commentsCount()).thenReturn(generate2000Comments());
+        when(statisticsMock.usersNames()).thenReturn(generateUsers(100));
+        when(statisticsMock.postsCount()).thenReturn(1000);
+        when(statisticsMock.commentsCount()).thenReturn(2000);
         StatisticsCalculator statisticsCalculator = new StatisticsCalculator();
         statisticsCalculator.calculateAdvStatistics(statisticsMock);
         //When

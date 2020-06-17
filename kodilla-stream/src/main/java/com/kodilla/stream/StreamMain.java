@@ -47,8 +47,9 @@ public class StreamMain {
         poemBeautifier.beautify(baseText, String::toLowerCase);
         PoemDecorator lambda = (text) -> {
             StringBuilder result = new StringBuilder();
-            for (int i = 0; i < text.length(); i++) {
-                result.append(text.charAt(i)).append(" ");
+            char[] charArray = text.toCharArray();
+            for (char character : charArray) {
+                result.append(character).append(" ");
             }
             return result.toString();
         };

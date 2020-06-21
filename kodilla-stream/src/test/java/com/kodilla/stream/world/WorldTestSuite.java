@@ -42,12 +42,9 @@ public class WorldTestSuite {
         world.addContinent(america);
 
         //When
-        BigDecimal totalPopulation = world.getContinentList().stream()
-                .flatMap(continent -> continent.getCountryList().stream())
-                .map(Country::getPeopleQuantity)
-                .reduce(BigDecimal.ZERO, (sum, current) -> sum = sum.add(current));
+        BigDecimal totalPopulation = world.getPeopleQuantity();
 
-        //When
+        //Then
         BigDecimal expectedSand = new BigDecimal("2336322000");
         Assert.assertEquals(expectedSand, totalPopulation);
 

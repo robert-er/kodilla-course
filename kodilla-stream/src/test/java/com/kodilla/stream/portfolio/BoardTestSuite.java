@@ -98,18 +98,15 @@ public class BoardTestSuite {
         long sum = project.getTaskLists().stream()
                 .filter(inProgressTasks::contains)
                 .flatMap(tl -> tl.getTasks().stream())
-                .map(date -> DAYS.between(date.getCreated(), LocalDate.now()))
-                .mapToLong(Long::longValue)
+                .mapToLong(date -> DAYS.between(date.getCreated(), LocalDate.now()))
                 .sum();
         long average = sum / counter;
 
         //wersja z jednym streamem
-        double avg = LongStream.range(0, project.getTaskLists().size())
-                .map(l -> project.getTaskLists().stream()
-                        .filter(inProgressTasks::contains)
-                        .flatMap(tl -> tl.getTasks().stream())
-                        .map(task -> DAYS.between(task.getCreated(), LocalDate.now()))
-                        .collect(toList()).get((int) l))
+        double avg = project.getTaskLists().stream()
+                .filter(inProgressTasks::contains)
+                .flatMap(t ->t.getTasks().stream())
+                .mapToLong(task -> DAYS.between(task.getCreated(), LocalDate.now()))
                 .average().getAsDouble();
 
         //Then

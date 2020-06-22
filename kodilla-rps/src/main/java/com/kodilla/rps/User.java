@@ -1,12 +1,16 @@
 package com.kodilla.rps;
 
 public class User {
-    private String name;
-    private int rounds;
+    private final String name;
+    private final int rounds;
+    private int joker;
+    private int difficulty;
 
-    public User(String name, int rounds) {
+    public User(String name, int rounds, int joker, int difficulty) {
         this.name = name;
         this.rounds = rounds;
+        this.joker = joker;
+        this.difficulty = difficulty;
     }
 
     public String getName() {
@@ -17,11 +21,23 @@ public class User {
         return rounds;
     }
 
+    public int getJoker() {
+        return joker;
+    }
+
+    public void setJoker(int joker) {
+        this.joker = joker;
+    }
+
+    public int getDifficulty() {
+        return difficulty;
+    }
+
     @Override
     public String toString() {
-        return "User{" +
-                "name='" + name + '\'' +
-                ", rounds=" + rounds +
-                '}';
+        return  "Gracz='" + name + '\'' +
+                ", ilość rund=" + rounds +
+                ", jokerów=" + joker +
+                ", trudność=" + difficulty;
     }
 }

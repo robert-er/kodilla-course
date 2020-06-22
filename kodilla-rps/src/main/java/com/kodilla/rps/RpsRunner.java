@@ -6,31 +6,28 @@ public class RpsRunner {
     public static void main(String[] args) {
         boolean end = false;
         Scanner scanner = new Scanner(System.in);
-        String name;
-        int rounds;
-        int joker;
-        int difficulty;
-        String menu;
-        Game game = new Game();
-
+        String menu = "";
+        boolean dataOK = false;
+        String scannerInput;
         while(!end) {
             System.out.println("Witemy w grze RPS");
-            System.out.println(" n - nowa gra, x - wyjście z gry");
-            menu = scanner.nextLine();
-
+            while(!dataOK) {
+                System.out.println(" n - nowa gra, x - wyjście z gry");
+                scannerInput = scanner.nextLine();
+                if(scannerInput.equals("n") || scannerInput.equals("x")) {
+                    menu = scannerInput;
+                    dataOK = true;
+                }
+            }
+            dataOK = false;
             switch (menu) {
                 case "n" :
-                    System.out.println("Podaj imie: ");
-                    name = scanner.nextLine();
-                    System.out.println("Podaj ilość rund: ");
-                    rounds = Integer.parseInt(scanner.nextLine());
-                    System.out.println("Joker umożliwia powtórne rozegranie rundy. Podaj ilość jokerów: ");
-                    joker = Integer.parseInt(scanner.nextLine());
-                    System.out.println("Wybierz trudność: 1 - normal, 2 - hard");
-                    difficulty = Integer.parseInt(scanner.nextLine());
-                    User user = new User(name, rounds, joker, difficulty);
+                    DataLoader dataLoader = new DataLoader();
+                    User user = dataLoader.getUserData();
+                    Game game = dataLoader.getGameData();
                     System.out.println(user);
-                    game.playGame(user);
+                    System.out.println(game);
+                    game.playGame();
                     break;
                 case "x" :
                     end = true;

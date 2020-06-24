@@ -6,7 +6,7 @@ public class FirstChallenge {
         if(b == 0){
             throw new ArithmeticException();
         }
-            return a / b;
+        return a / b;
     }
 
     /**

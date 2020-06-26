@@ -17,7 +17,17 @@ public class FileReader {
         } catch (IOException e) {
             throw new FileReaderException();
         } finally {
-            System.out.println("finally message");
+            System.out.println("EOF " + file.getName());
+        }
+
+        File file2 = new File(classLoader.getResource("file/names2.txt").getFile());
+
+        try (Stream<String> file2Lines = Files.lines(Paths.get(file2.getPath()))) {
+            file2Lines.forEach(System.out::println);
+        } catch (IOException e) {
+            throw new FileReaderException();
+        } finally {
+            System.out.println("EOF " + file2.getName());
         }
     }
 }

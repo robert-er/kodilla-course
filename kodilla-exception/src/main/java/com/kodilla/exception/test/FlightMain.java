@@ -9,7 +9,6 @@ public class FlightMain {
         Flight flight5 = null;
         FlyConnectionChecker flyConnectionChecker = new FlyConnectionChecker();
         flyConnectionChecker.checkConnection(flight1);
-
         flyConnectionChecker.checkConnection(flight2);
         flyConnectionChecker.checkConnection(flight3);
         flyConnectionChecker.checkConnection(flight4);

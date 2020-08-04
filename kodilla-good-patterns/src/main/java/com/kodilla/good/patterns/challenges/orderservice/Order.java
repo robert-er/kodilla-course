@@ -1,6 +1,6 @@
 package com.kodilla.good.patterns.challenges.orderservice;
 
-public class Order {
+public class Order implements OrderService {
 
     private static int idCounter;
     private int id;
@@ -27,6 +27,7 @@ public class Order {
         return status;
     }
 
+    @Override
     public void pay() {
         isClosed();
         isCancelled();
@@ -35,6 +36,7 @@ public class Order {
         System.out.println("Order id: " + id + ", " + product.getName() + " was paid.");
     }
 
+    @Override
     public void send() {
         isClosed();
         isCancelled();
@@ -44,6 +46,7 @@ public class Order {
 
     }
 
+    @Override
     public void cancel() {
         isClosed();
         isCancelled();
@@ -51,6 +54,7 @@ public class Order {
         System.out.println("Order id: " + id + ", " + product.getName() + " was sent.");
     }
 
+    @Override
     public void close() {
         isClosed();
         status = Status.CLOSED;

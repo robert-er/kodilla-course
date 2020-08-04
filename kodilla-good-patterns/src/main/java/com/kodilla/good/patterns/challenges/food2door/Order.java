@@ -1,6 +1,6 @@
 package com.kodilla.good.patterns.challenges.food2door;
 
-public class Order {
+public class Order implements Process{
 
     private static int idCounter;
     private int id;
@@ -18,6 +18,7 @@ public class Order {
             this.user = user;
     }
 
+    @Override
     public void process() {
         if (supplier.isAvailable(product, quantity)) {
             System.out.println("Order id: " + id + " is processed.");

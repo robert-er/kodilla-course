@@ -4,32 +4,32 @@ public class Main {
 
     public static void main(String[] args) {
 
-        Airport wroclaw = new Airport("Wroclaw");
+        Flight wroclaw = new Flight("Wroclaw");
         wroclaw.addArrivalAirport("Warszawa");
         wroclaw.addArrivalAirport("Gdansk");
         wroclaw.addArrivalAirport("Poznan");
         wroclaw.addArrivalAirport("Berlin");
-        Airport warszawa = new Airport("Warszawa");
+        Flight warszawa = new Flight("Warszawa");
         warszawa.addArrivalAirport("Singapur");
         warszawa.addArrivalAirport("Frankfurt");
         warszawa.addArrivalAirport("Berlin");
-        Airport poznan = new Airport("Poznan");
+        Flight poznan = new Flight("Poznan");
         poznan.addArrivalAirport("Frankfurt");
         poznan.addArrivalAirport("Warszawa");
-        Airport berlin = new Airport("Berlin");
+        Flight berlin = new Flight("Berlin");
         berlin.addArrivalAirport("Oslo");
         berlin.addArrivalAirport("Paryz");
         berlin.addArrivalAirport("Warszawa");
-        AirportDB airportDB = new AirportDB();
-        airportDB.addAirport(wroclaw);
-        airportDB.addAirport(poznan);
-        airportDB.addAirport(warszawa);
-        airportDB.addAirport(berlin);
-        Connection connection = new Connection(airportDB);
+        FlightDB flightDB = new FlightDB();
+        flightDB.addFlight(wroclaw);
+        flightDB.addFlight(poznan);
+        flightDB.addFlight(warszawa);
+        flightDB.addFlight(berlin);
+        FlightSearchService flightSearchService = new FlightSearchService(flightDB);
 
-        System.out.println("From Wroclaw: " + connection.findConnectionFrom("Wroclaw"));
-        System.out.println("To Berlin from: " + connection.findConnectionTo("Berlin"));
-        System.out.println("From Wroclaw to Frankfurt throw: " + connection.findConnectionThrow("Wroclaw", "Frankfurt"));
+        System.out.println("From Wroclaw: " + flightSearchService.findFlightsFrom("Wroclaw"));
+        System.out.println("To Berlin from: " + flightSearchService.findFlightsTo("Berlin"));
+        System.out.println("From Wroclaw to Frankfurt through: " + flightSearchService.findFlightsThrough("Wroclaw", "Frankfurt"));
     }
 
 }

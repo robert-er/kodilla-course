@@ -3,12 +3,12 @@ package com.kodilla.good.patterns.challenges.airports;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Airport {
+public class Flight {
 
     private String departureAirport;
     private List<String> arrivalAirports = new ArrayList<>();
 
-    public Airport(String departureAirport) {
+    public Flight(String departureAirport) {
         this.departureAirport = departureAirport;
     }
 

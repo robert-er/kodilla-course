@@ -3,7 +3,7 @@ package com.kodilla.good.patterns.challenges.food2door;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Supplier {
+public class Supplier implements FoodSupplier{
 
     private String name;
     private List<Product> offerList = new ArrayList<>();
@@ -27,5 +27,15 @@ public class Supplier {
             System.out.println("product not on the list");
         }
         return false;
+    }
+
+    @Override
+    public void process(Order order) {
+        if (isAvailable(order.getProduct(), order.getQuantity())) {
+            System.out.println("Order id: " + order.getId() + " is processed.");
+            order.getProduct().subQuantity(order.getQuantity());
+        } else {
+            System.out.println("Create order: product not available.");
+        }
     }
 }

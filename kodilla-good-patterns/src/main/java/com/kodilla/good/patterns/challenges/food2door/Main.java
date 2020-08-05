@@ -9,9 +9,8 @@ public class Main {
     public static void main(String[] args) {
         createUsers();
         createSuppliers();
-        Order order = new Order(supplier1, product1, 20, user);
-        order.process();
-
+        FoodOrderManager foodOrderManager = new FoodOrderManager();
+        foodOrderManager.processOrder(supplier1, new Order(product1, 20, user));
     }
 
     private static void createUsers() {

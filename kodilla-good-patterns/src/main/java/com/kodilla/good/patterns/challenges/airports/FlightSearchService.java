@@ -1,7 +1,8 @@
 package com.kodilla.good.patterns.challenges.airports;
 
-import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class FlightSearchService {
 
@@ -12,37 +13,27 @@ public class FlightSearchService {
     }
 
     public List<String> findFlightsFrom(String flyFrom) {
-        List<String> flightsFromList = new ArrayList<>();
-        for (int i = 0; i < flightDB.getFlightList().size(); i++ ) {
-            if (flyFrom.equals(flightDB.getFlightList().get(i).getDepartureAirport())) {
-                flightsFromList = flightDB.getFlightList().get(i).getArrivalAirports();
-            }
-        }
-        return flightsFromList;
+        return flightDB.getFlightList().stream()
+                .filter(flight -> flight.getDepartureAirport().equals(flyFrom))
+                .map(Flight::getArrivalAirports)
+                .flatMap(Collection::stream)
+                .collect(Collectors.toList());
     }
 
     public List<String> findFlightsTo(String flyTo) {
-        List<String> flightsToList = new ArrayList<>();
-
-
-        for (int i = 0; i < flightDB.getFlightList().size(); i++) {
-            if (flightDB.getFlightList().get(i).getArrivalAirports().contains(flyTo)) {
-                flightsToList.add(flightDB.getFlightList().get(i).getDepartureAirport());
-            }
-        }
-        return flightsToList;
+        return flightDB.getFlightList().stream()
+                .filter(flight -> flight.getArrivalAirports().contains(flyTo))
+                .map(Flight::getDepartureAirport)
+                .collect(Collectors.toList());
     }
 
     public List<String> findFlightsThrough(String flyFrom, String flyTo) {
         List<String> flightsFromList = findFlightsFrom(flyFrom);
         List<String> flightsToList = findFlightsTo(flyTo);
-        List<String> flightsThroughList =  new ArrayList<>();
-        for (String s : flightsFromList) {
-            if (flightsToList.contains(s)) {
-                flightsThroughList.add(s);
-            }
-        }
-        return flightsThroughList;
+
+        return flightsToList.stream()
+                .filter(flightsFromList::contains)
+                .collect(Collectors.toList());
     }
 
 }

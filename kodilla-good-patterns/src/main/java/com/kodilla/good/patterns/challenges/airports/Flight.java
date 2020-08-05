@@ -2,6 +2,7 @@ package com.kodilla.good.patterns.challenges.airports;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class Flight {
 
@@ -27,4 +28,19 @@ public class Flight {
     public List<String> getArrivalAirports() {
         return arrivalAirports;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Flight flight = (Flight) o;
+        return Objects.equals(departureAirport, flight.departureAirport) &&
+                Objects.equals(arrivalAirports, flight.arrivalAirports);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(departureAirport, arrivalAirports);
+    }
+
 }

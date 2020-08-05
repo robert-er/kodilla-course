@@ -12,7 +12,8 @@ public class Order implements OrderService {
         this.product = product;
         this.buyer = buyer;
         this.status = Status.NEW;
-        this.id = idCounter++;
+        idCounter++;
+        this.id = idCounter;
     }
 
     public Product getProduct() {

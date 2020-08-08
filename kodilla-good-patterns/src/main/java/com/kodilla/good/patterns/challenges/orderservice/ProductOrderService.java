@@ -1,22 +1,24 @@
 package com.kodilla.good.patterns.challenges.orderservice;
 
-public class ProductOrderService {
+public class ProductOrderService implements ProductOrderInterface {
 
+    private MessageService messageService;
     private OrderService orderService;
-    private Product product;
-    private UserRepositoryService userRepositoryService = new UserRepository();
+    private OrderStatus orderStatus;
 
+    public ProductOrderService(MessageService messageService, OrderService orderService) {
+        this.messageService = messageService;
+        this.orderService = orderService;
+    }
+
+    @Override
     public void process() {
-        Order order = createOrder();
-        order.pay();
-        order.send();
-        order.close();
+        if (orderService.isCompleted()) {
+            orderStatus = OrderStatus.SUCCESS;
+        } else {
+            orderStatus = OrderStatus.FAIL;
+        }
+        messageService.send("Order " + orderStatus.name());
     }
 
-    private Order createOrder() {
-        User buyer = userRepositoryService.getBuyer();
-        User seller = userRepositoryService.getSeller();
-        return new Order(new Vehicles(seller, Category.CARS, "AUDI",
-                16109.78, "Niemec plakal jak sprzedawal", 99505), buyer);
-    }
 }

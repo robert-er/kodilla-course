@@ -1,7 +1,7 @@
 package com.kodilla.good.patterns.challenges.orderservice;
 
-public interface OrderService {
+public interface ProductOrderInterface {
 
-    boolean isCompleted();
+    void process();
 
 }

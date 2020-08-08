@@ -1,5 +1,7 @@
 package com.kodilla.good.patterns.challenges.food2door;
 
+import java.util.Objects;
+
 public class Product {
 
     private String name;
@@ -27,4 +29,18 @@ public class Product {
         }
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Product product = (Product) o;
+        return price == product.price &&
+                quantity == product.quantity &&
+                Objects.equals(name, product.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, price, quantity);
+    }
 }

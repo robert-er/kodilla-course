@@ -10,7 +10,7 @@ public final class Logger {
 
     public static Logger getInstance() {
         if (logger == null) {
-            synchronized(SettingsFileEngine.class) {
+            synchronized(Logger.class) {
                 if (logger == null) {
                     logger = new Logger();
                 }

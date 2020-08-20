@@ -1,0 +1,25 @@
+Zadanie 16.5
+
+W ramach ćwiczeń na zakończenie submodułu napisz po 3 zapytania, które mają za zadanie:
+
+1. Dodanie nowego postu do tabeli POSTS.
+2. Modyfikacje w dodanym rekordzie wartość pola BODY i ustawienia jej na "To delete".
+3. Usunięcie dodany przed chwilą rekord.
+
+---------------------------------ROZWIĄZANIE----------------------------------
+
+1.
+INSERT INTO POSTS (USER_ID, BODY)
+VALUES (3, "This is new post of user id 3");
+COMMIT;
+
+2.
+UPDATE POSTS
+SET BODY = "to delete"
+WHERE ID = 8;
+COMMIT;
+
+3.
+DELETE FROM POSTS
+WHERE ID = 8;
+COMMIT;

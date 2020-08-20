@@ -51,17 +51,14 @@ public class DbManagerTestSuite {
                 " FROM USERS U JOIN POSTS P ON U.ID = P.USER_ID" +
                 " GROUP BY U.ID" +
                 " HAVING COUNT(*) >= 2;";
-        Statement statement = dbManager.getConnection().createStatement();
+        Statement statement = dbManager.getConnection().createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,
+                ResultSet.CONCUR_READ_ONLY);
         ResultSet rs = statement.executeQuery(sqlQuery);
 
         //Then
         int counter = 0;
-        while(rs.next()) {
-            System.out.println(rs.getString("NAME") + ", " +
-                    rs.getString("SURNAME") + ", " +
-                    rs.getInt("POST_NUMBER"));
-            counter++;
-        }
+        rs.last();
+        counter = rs.getRow();
         rs.close();
         statement.close();
         Assert.assertEquals(1, counter);

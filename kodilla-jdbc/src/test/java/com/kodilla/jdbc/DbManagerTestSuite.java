@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class DbManagerTestSuite {
+
     @Test
     public void testConnect() throws SQLException {
         //Given
@@ -38,5 +39,31 @@ public class DbManagerTestSuite {
         rs.close();
         statement.close();
         Assert.assertEquals(5, counter);
+    }
+
+    @Test
+    public void testSelectUsersAndPosts() throws SQLException {
+        //Given
+        DbManager dbManager = DbManager.getInstance();
+
+        //When
+        String sqlQuery = "SELECT U.FIRSTNAME AS NAME, U.LASTNAME AS SURNAME, COUNT(*) AS POST_NUMBER" +
+                " FROM USERS U JOIN POSTS P ON U.ID = P.USER_ID" +
+                " GROUP BY U.ID" +
+                " HAVING COUNT(*) >= 2;";
+        Statement statement = dbManager.getConnection().createStatement();
+        ResultSet rs = statement.executeQuery(sqlQuery);
+
+        //Then
+        int counter = 0;
+        while(rs.next()) {
+            System.out.println(rs.getString("NAME") + ", " +
+                    rs.getString("SURNAME") + ", " +
+                    rs.getInt("POST_NUMBER"));
+            counter++;
+        }
+        rs.close();
+        statement.close();
+        Assert.assertEquals(1, counter);
     }
 }

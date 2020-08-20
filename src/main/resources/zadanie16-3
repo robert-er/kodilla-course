@@ -1,3 +1,28 @@
+Zadanie 16.3
+
+Twoim zadaniem jest utworzenie tabel:
+
+ISSUESLISTS - zawierającej listy zadań, posiadającej pola (kolumny):
+
+ID - klucz główny,
+NAME - nazwa listy zadań.
+ISSUES - zawierającej zadania, posiadającej pola (kolumny):
+
+ID - klucz główny,
+ISSUESLIST_ID - klucz obcy do tabeli z listami zadań,
+SUMMARY - podsumowanie zadania (nazwa),
+DESCRIPTION - opis zadania,
+USER_ID_ASSIGNEDTO - klucz obcy do tabeli USERS wskazujący użytkownika, do którego przypisane jest zadanie.
+Aby zrealizować zadanie:
+
+Napisz polecenie SQL tworzące tabelę ISSUESLISTS, wraz z jej ograniczeniami i więzami integralności.
+Napisz polecenie SQL tworzące tabelę ISSUES, wraz z jej ograniczeniami i więzami integralności.
+Napisz polecenia SQL dodające do tabeli ISSUESLISTS trzy listy zadań o nazwach “ToDo”, “In progress” oraz “Done”.
+Napisz polecenia SQL dodające do tabeli ISSUES po kilka (co najmniej pięć) zadań dla każdej z list.
+Zapisz wszystkie polecenia w jednym pliku tekstowym z rozszerzeniem .txt. Pamiętaj aby każde polecenie zakończyć średnikiem.
+
+---------------------------------ROZWIĄZANIE----------------------------------
+
 CREATE TABLE ISSUESLISTS
 (
 	ID SERIAL PRIMARY KEY,

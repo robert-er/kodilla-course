@@ -2,8 +2,8 @@ public class Main {
 
     public static void main(String[] args) {
 
-        Displayer displayer = new Displayer();
+        Player player = new Player();
+        player.startMenu();
 
-        displayer.display();
     }
 }

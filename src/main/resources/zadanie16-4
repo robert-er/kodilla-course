@@ -1,0 +1,22 @@
+Zadanie 16.4
+Napisz kilka zapytań SQL, oto co powinny one zwracać:
+
+1. Listę zadań z tabeli ISSUESS z dołączonymi do nich nazwami list zadań z tabeli ISSUESLISTS
+2. Listę zadań z tabeli ISSUESS z przypisanymi do nich użytkownikami z tabeli USERS
+3. Imiona i nazwiska użytkowników posiadających zadania, wraz z informacją o ilości zadań, które są do nich przypisane
+
+---------------------------------ROZWIĄZANIE----------------------------------
+
+1.
+SELECT I.ID AS NUMBER, I.SUMMARY AS ISSUE_NAME, L.NAME AS LIST_NAME
+FROM ISSUES I JOIN ISSUESLISTS L ON I.ISSUESLIST_ID = L.ID;
+
+2.
+SELECT I.ID AS NUMBER, I.SUMMARY AS ISSUE_NAME, U.FIRSTNAME AS USER_NAME, U.LASTNAME AS USER_LASTNAME
+FROM ISSUES I JOIN USERS U ON I.USERID_ASSIGNEDTO = U.ID
+ORDER BY I.ID;
+
+3.
+SELECT U.FIRSTNAME AS USER_NAME, U.LASTNAME AS USER_LASTNAME, COUNT(*) AS ISSUES_NUMBER
+FROM USERS U JOIN ISSUES I ON I.USERID_ASSIGNEDTO = U.ID
+GROUP BY U.ID;

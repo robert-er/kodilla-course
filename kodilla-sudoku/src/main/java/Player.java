@@ -41,8 +41,6 @@ public class Player {
 
     private void playGame() {
         boolean solved = false;
-        String[] numbers;
-
         System.out.println("board to solve");
         displayer.display(State.getBoardToSolve());
         board.setBoard(State.getBoardToSolve());
@@ -53,14 +51,8 @@ public class Player {
             if (scannerInput.equals("SUDOKU")) {
                 solveSudoku();
             } else {
-                numbers = scannerInput.split(",", 3);
-                System.out.println("your choice: row " + numbers[0] + " ,column " + numbers[1] + " ,number " + numbers[2]);
-                board.putNumber(Integer.parseInt(numbers[0]), Integer.parseInt(numbers[1]), Integer.parseInt(numbers[2]));
-                displayer.display(board.getBoard());
-                solved = board.isFull();
-                if (solved) {
-                    System.out.println("SUDOKU IS SOLVED!");
-                }
+                solved = isSolved();
+                verifyIfSolved(solved);
             }
 
         }
@@ -72,6 +64,23 @@ public class Player {
             displayer.display(State.getSolvedBoard());
         } else {
             System.out.println("State.solve failed");
+        }
+    }
+
+    private boolean isSolved() {
+        String[] numbers;
+        boolean solved;
+        numbers = scannerInput.split(",", 3);
+        System.out.println("your choice: row " + numbers[0] + " ,column " + numbers[1] + " ,number " + numbers[2]);
+        board.putNumber(Integer.parseInt(numbers[0]), Integer.parseInt(numbers[1]), Integer.parseInt(numbers[2]));
+        displayer.display(board.getBoard());
+        solved = board.isFull();
+        return solved;
+    }
+
+    private void verifyIfSolved(boolean solved) {
+        if (solved) {
+            System.out.println("SUDOKU IS SOLVED!");
         }
     }
 }

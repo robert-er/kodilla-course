@@ -37,9 +37,6 @@ public class Board {
 
     public void generateBoard() {
         Random random = new Random();
-        int row;
-        int column;
-        int number;
         int counter = AMOUNT_OF_GENERATED_NUMBERS;
 
         for (int i = 0; i < SIZE; i++) {
@@ -49,9 +46,9 @@ public class Board {
         }
 
        while ( counter > 0) {
-           row = random.nextInt(9);
-           column = random.nextInt(9);
-           number = random.nextInt(9) + 1;
+           int row = random.nextInt(9);
+           int column = random.nextInt(9);
+           int number = random.nextInt(9) + 1;
            if (board[row][column] == EMPTY) {
                if (State.isPossibleToPlaceNumber(board, row, column, number)) {
 

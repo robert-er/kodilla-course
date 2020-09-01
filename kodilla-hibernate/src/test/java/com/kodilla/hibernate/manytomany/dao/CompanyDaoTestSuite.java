@@ -66,7 +66,7 @@ public class CompanyDaoTestSuite {
         createTestData();
 
         //When
-        List<Company> companyList = companyDao.findByFirstThreeCharacters("Dat");
+        List<Company> companyList = companyDao.findByFirstThreeCharacters("Datzzzzzzzzzzzz");
 
         //Then
         Assert.assertEquals(1, companyList.size());

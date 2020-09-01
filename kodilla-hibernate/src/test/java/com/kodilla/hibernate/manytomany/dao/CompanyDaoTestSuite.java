@@ -33,8 +33,17 @@ public class CompanyDaoTestSuite {
 
     @Test
     public void testSaveManyToMany(){
-        //Given + When
+        //Given
        createTestData();
+
+       //When
+        companyDao.save(softwareMachine);
+        companyDao.save(dataMaesters);
+        companyDao.save(greyMatter);
+
+        softwareMachineId = softwareMachine.getId();
+        dataMaestersId = dataMaesters.getId();
+        greyMatterId = greyMatter.getId();
 
         //Then
         Assert.assertNotEquals(0, softwareMachineId);
@@ -50,6 +59,14 @@ public class CompanyDaoTestSuite {
         //Given
         createTestData();
 
+        companyDao.save(softwareMachine);
+        companyDao.save(dataMaesters);
+        companyDao.save(greyMatter);
+
+        softwareMachineId = softwareMachine.getId();
+        dataMaestersId = dataMaesters.getId();
+        greyMatterId = greyMatter.getId();
+
         //When
         List<Employee> employeeList = employeeDao.findByLastname("Smith");
 
@@ -64,6 +81,14 @@ public class CompanyDaoTestSuite {
     public void testCompanyFindByFirstThreeCharacters() {
         //Given
         createTestData();
+
+        companyDao.save(softwareMachine);
+        companyDao.save(dataMaesters);
+        companyDao.save(greyMatter);
+
+        softwareMachineId = softwareMachine.getId();
+        dataMaestersId = dataMaesters.getId();
+        greyMatterId = greyMatter.getId();
 
         //When
         List<Company> companyList = companyDao.findByFirstThreeCharacters("Datzzzzzzzzzzzz");
@@ -87,14 +112,6 @@ public class CompanyDaoTestSuite {
         stephanieClarckson.getCompanies().add(dataMaesters);
         lindaKovalsky.getCompanies().add(dataMaesters);
         lindaKovalsky.getCompanies().add(greyMatter);
-
-        companyDao.save(softwareMachine);
-        companyDao.save(dataMaesters);
-        companyDao.save(greyMatter);
-
-        softwareMachineId = softwareMachine.getId();
-        dataMaestersId = dataMaesters.getId();
-        greyMatterId = greyMatter.getId();
     }
 
     private void cleanUpTestData() {

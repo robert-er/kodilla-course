@@ -10,6 +10,13 @@ import java.util.List;
         query = "FROM Employee WHERE lastname LIKE :LASTNAME"
 )
 
+@NamedNativeQuery(
+        name = "Employee.findByFragment",
+        query = "SELECT * FROM EMPLOYEES" +
+                " WHERE FIRSTNAME OR LASTNAME LIKE CONCAT('%'+:ARG+'%')",
+        resultClass = Employee.class
+)
+
 @Entity
 @Table(name = "EMPLOYEES")
 public class Employee {
@@ -58,7 +65,7 @@ public class Employee {
         this.lastname = lastname;
     }
 
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinTable(
             name = "JOIN_COMPANY_EMPLOYEE",
             joinColumns = {@JoinColumn(name = "EMPLOYEE_ID", referencedColumnName = "EMPLOYEE_ID")},
@@ -70,5 +77,15 @@ public class Employee {
 
     public void setCompanies(List<Company> companies) {
         this.companies = companies;
+    }
+
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "id=" + id +
+                ", firstname='" + firstname + '\'' +
+                ", lastname='" + lastname + '\'' +
+                ", companies=" + companies +
+                '}';
     }
 }

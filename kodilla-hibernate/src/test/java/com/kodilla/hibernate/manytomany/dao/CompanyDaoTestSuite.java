@@ -51,7 +51,7 @@ public class CompanyDaoTestSuite {
         Assert.assertNotEquals(0, greyMatterId);
 
         //CleanUp
-       cleanUpTestData();
+        cleanUpTestData();
     }
 
     @Test

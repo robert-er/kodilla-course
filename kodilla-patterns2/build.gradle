@@ -14,12 +14,10 @@ repositories {
 
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter'
+	implementation 'org.springframework.boot:spring-boot-starter-aop'
 	testImplementation('org.springframework.boot:spring-boot-starter-test') {
 		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
 	}
-//	testImplementation group: 'junit', name: 'junit', version: '4.12'
-//	testImplementation 'org.junit.platform:junit-platform-commons:1.5.2'
-//	testCompile ('org.junit.jupiter:junit-jupiter:5.6.0')
 
 	testImplementation('org.junit.jupiter:junit-jupiter-api')
 	testRuntimeOnly('org.junit.jupiter:junit-jupiter-engine')

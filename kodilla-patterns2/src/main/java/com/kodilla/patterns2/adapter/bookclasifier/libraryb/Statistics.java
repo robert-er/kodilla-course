@@ -7,7 +7,7 @@ public class Statistics implements BookStatistics {
 
     @Override
     public int averagePublicationYear(Map<BookSignature, Book> books) {
-        if(books.size() == 0) {
+        if(books.isEmpty()) {
             return 0;
         }
         int sum = 0;

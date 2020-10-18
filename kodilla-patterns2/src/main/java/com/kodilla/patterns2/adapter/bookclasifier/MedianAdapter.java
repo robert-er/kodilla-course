@@ -12,7 +12,7 @@ public class MedianAdapter extends MedianAdaptee implements Classifier {
 
     @Override
     public int publicationYearMedian(Set<Book> bookSet) throws EmptyBookSetException {
-        if (bookSet.size() == 0) {
+        if (bookSet.isEmpty()) {
             throw new EmptyBookSetException();
         }
         Map<BookSignature, com.kodilla.patterns2.adapter.bookclasifier.libraryb.Book> bookMap = new HashMap<>();

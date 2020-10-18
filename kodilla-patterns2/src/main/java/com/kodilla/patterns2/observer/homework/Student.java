@@ -5,13 +5,11 @@ import java.util.List;
 
 public class Student implements WatchedStudents {
 
-    private final List<Mentor> mentors;
-    private final List<String> homeworks;
+    private final List<Mentor> mentors = new ArrayList<>();
+    private final List<String> homeworks = new ArrayList<>();
     private final String name;
 
     public Student(String name) {
-        mentors = new ArrayList<>();
-        homeworks = new ArrayList<>();
         this.name = name;
     }
 

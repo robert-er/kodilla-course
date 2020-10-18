@@ -3,6 +3,8 @@ package com.kodilla.patterns2.adapter.company;
 import com.kodilla.patterns2.adapter.company.oldhrsystem.Workers;
 import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 class SalaryAdapterTest {
     @Test
     public void testTotalSalary() {
@@ -15,5 +17,4 @@ class SalaryAdapterTest {
         System.out.println("Total salary: " + totalSalary);
         assertEquals(27750, totalSalary, 0);
     }
-
 }
